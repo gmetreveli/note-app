@@ -7,37 +7,77 @@
       </div>
       <!-- form -->
       <div class="form">
-        <input type="text" placeholder="New Task" />
-        <button><i class="far fa-plus-square"></i></button>
+        <input 
+          type="text" 
+          placeholder="New Task" 
+          :value="newTask" 
+          @input="$emit('update-new-task', $event.target.value)" 
+          @keyup.enter="addTask"
+        />
+        <button @click="addTask"><i class="far fa-plus-square"></i></button>
       </div>
       <!-- task lists -->
       <div class="taskItems">
         <ul>
-          <li>
-            <button>Learn Vue JS</button>
-            <button><i class="far fa-trash-alt"></i></button>
-          </li>
-          <li>
-            <button>Watch netflix</button>
-            <button><i class="far fa-trash-alt"></i></button>
-          </li>
+          <task-item 
+          :task="task" 
+          v-for="(task, index) in tasks" 
+          :key="task.id"
+          @remove="removeTask(index)"
+          @complete="completeTask(task)"
+          ></task-item>
         </ul>
       </div>
       <!-- buttons -->
       <div class="clearBtns">
-        <button>Clear completed</button>
-        <button>Clear all</button>
+        <button @click="clearCompleted">Clear completed</button>
+        <button @click="clearAll">Clear all</button>
       </div>
       <!-- pending task -->
       <div class="pendingTasks">
-        <span>Pending Tasks: </span>
+        <span>Pending Tasks: {{ incomplete }}</span>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import TaskItem from './Task-item.vue';
+
 export default {
   name: 'Task',
+  props: {
+    tasks: Array,
+    incomplete: Number,
+    newTask: String, 
+  },
+  components:{
+    TaskItem
+  },
+  methods: {
+    addTask() {
+      this.$emit('add-task');
+    },
+    updateNewTask() {
+      this.$emit('update-new-task', this.newTask);
+    },
+    clearCompleted() {
+      this.$emit('clear-completed');
+    },
+    clearAll() {
+      this.$emit('clear-all-tasks');
+    },
+    removeTask(index){
+      this.tasks.splice(index, 1);
+    },
+    completeTask(task){
+      task.completed = !task.completed;
+    }
+  },
+  watch: {
+    newTask(newVal) {
+      this.updateNewTask();
+    },
+  },
 }
 </script>
