@@ -12,14 +12,14 @@ general
 
 body {
   font:
-    15px/1.4 'Poppins',
+    15px/1.4 'Franklin',
     sans-serif;
-  background: #4ec5c1;
-  color: #333;
+  background: #484b4b;
+  color: #ece0e0;
 }
 
 #app {
-  padding: 60px 0;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .container {
@@ -68,92 +68,4 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
-}
-
-/* 
-task 
-----
-*/
-.task {
-  background: #fff;
-  border-radius: 25px;
-  padding: 30px;
-  box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.1);
-}
-
-.title {
-  text-align: center;
-  margin: 0 0 20px;
-}
-
-.form {
-  position: relative;
-  margin: 0 0 30px;
-}
-
-.form button {
-  background: none;
-  border: none;
-  color: #4ec5c1;
-  font-size: 18px;
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
-}
-
-.clearBtns {
-  display: flex;
-  justify-content: space-between;
-  margin: 0 0 20px;
-}
-
-.clearBtns button {
-  width: 100%;
-  background: #4ec5c1;
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  padding: 10px;
-  margin: 0 5px;
-}
-
-.clearBtns button:hover {
-  background: #333;
-}
-
-.pendingTasks {
-  padding: 0 6px;
-}
-
-/* 
-task items
-----------
-*/
-.taskItems {
-  padding: 0 10px;
-}
-
-.taskItems li {
-  display: flex;
-  justify-content: space-between;
-  margin: 0 0 20px;
-}
-
-.taskItems button {
-  background: none;
-  border: none;
-}
-
-.taskItems button:hover {
-  color: #4ec5c1;
-}
-
-.taskItems .toggle i {
-  margin: 0 10px 0 0;
-  font-size: 14px;
-}
-
-.taskItems .toggle.toggle-completed {
-  text-decoration: line-through;
 }

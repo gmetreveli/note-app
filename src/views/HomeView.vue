@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import Task from '../components/Task.vue'
+import Home from '../components/Home.vue'
 </script>
 
 <template>
   <main>
-    <Task />
+    <Home />
   </main>
 </template>
